@@ -1,0 +1,1312 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Wilder Ramos 3D | Diseño y Modelado de Casas</title>
+
+  <meta name="description"
+    content="Wilder Ramos - Diseño y modelado de casas en 3D con SketchUp. Visualización de viviendas, fachadas, interiores y proyectos personalizados.">
+
+  <meta name="theme-color" content="#14243a">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #14243a;
+      --navy-light: #203954;
+      --gold: #d7ad64;
+      --white: #ffffff;
+      --background: #f5f7fa;
+      --text: #273449;
+      --muted: #718096;
+      --border: #e5eaf0;
+      --shadow: 0 15px 45px rgba(20, 36, 58, 0.10);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    /* ===== HEADER ===== */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(20, 36, 58, 0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar {
+      min-height: 82px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .brand-text {
+      line-height: 1.3;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-text span {
+      display: block;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #e8edf5;
+      font-size: 13px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-links .nav-contact {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 11px 18px;
+      border-radius: 7px;
+    }
+
+    .nav-links .nav-contact:hover {
+      background: #edc982;
+      color: var(--navy);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 7px;
+      color: white;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    /* ===== HERO ===== */
+
+    .hero {
+      background:
+        linear-gradient(
+          90deg,
+          rgba(14, 27, 44, 0.96) 0%,
+          rgba(14, 27, 44, 0.83) 48%,
+          rgba(14, 27, 44, 0.25) 100%
+        ),
+        url('images/portada-3d.jpg') center/cover no-repeat;
+
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 720px;
+      padding: 100px 0;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.12;
+      margin-bottom: 25px;
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero p {
+      color: #e1e8f0;
+      font-size: 16px;
+      max-width: 600px;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 24px;
+      border-radius: 7px;
+      font-weight: 700;
+      font-size: 13px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-primary:hover {
+      background: #edc982;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,0.6);
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--navy);
+    }
+
+    /* ===== GENERAL SECTIONS ===== */
+
+    section {
+      padding: 95px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 50px;
+    }
+
+    .section-heading .eyebrow {
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(30px, 4vw, 43px);
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* ===== SERVICES ===== */
+
+    .services {
+      background: var(--background);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 35px 28px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      transition: 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow);
+      border-color: var(--gold);
+    }
+
+    .service-icon {
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #edf2f8;
+      color: var(--navy);
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+
+    .service-card h3 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--navy);
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .text-link {
+      color: #9a702e;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .text-link:hover {
+      color: var(--navy);
+    }
+
+    /* ===== PROJECTS ===== */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      border-radius: 14px;
+      background: white;
+      border: 1px solid var(--border);
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-image {
+      height: 245px;
+      overflow: hidden;
+      background: #e8edf3;
+    }
+
+    .project-image img {
+      height: 100%;
+      transition: transform 0.5s;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.06);
+    }
+
+    .project-info {
+      padding: 23px;
+    }
+
+    .project-info span {
+      color: #a27b3d;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .project-info h3 {
+      color: var(--navy);
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      margin: 7px 0;
+    }
+
+    .project-info p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* ===== ABOUT ===== */
+
+    .about {
+      background: var(--navy);
+      color: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .about-image {
+      min-height: 400px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #203954;
+    }
+
+    .about-image img {
+      min-height: 400px;
+      height: 100%;
+    }
+
+    .about .section-heading {
+      text-align: left;
+      margin: 0 0 25px;
+    }
+
+    .about .section-heading h2 {
+      color: white;
+    }
+
+    .about-description {
+      color: #d0dae6;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .about-points {
+      display: grid;
+      gap: 13px;
+      margin-bottom: 30px;
+    }
+
+    .about-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: #e6edf5;
+      font-size: 13px;
+    }
+
+    .about-point span {
+      color: var(--gold);
+      font-size: 18px;
+    }
+
+    /* ===== PROCESS ===== */
+
+    .process {
+      background: var(--background);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .process-card {
+      text-align: center;
+      padding: 25px 15px;
+    }
+
+    .process-number {
+      width: 55px;
+      height: 55px;
+      margin: 0 auto 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--gold);
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .process-card h3 {
+      color: var(--navy);
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .process-card p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* ===== CONTACT ===== */
+
+    .contact {
+      background: white;
+    }
+
+    .contact-box {
+      background: var(--navy);
+      color: white;
+      border-radius: 20px;
+      padding: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 35px;
+    }
+
+    .contact-box h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(27px, 4vw, 40px);
+      line-height: 1.2;
+      margin-bottom: 15px;
+    }
+
+    .contact-box p {
+      color: #d0dae6;
+      font-size: 14px;
+      max-width: 600px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 200px;
+    }
+
+    .contact-actions .btn {
+      white-space: nowrap;
+    }
+
+    /* ===== FOOTER ===== */
+
+    footer {
+      background: #0d1928;
+      color: #b9c5d4;
+      padding: 30px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      color: white;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+    }
+
+    .footer-content p {
+      font-size: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      font-size: 12px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    /* ===== WHATSAPP FLOAT ===== */
+
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 999;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+      font-weight: 800;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+    }
+
+    /* ===== RESPONSIVE ===== */
+
+    @media (max-width: 950px) {
+      .nav-links {
+        gap: 14px;
+      }
+
+      .nav-links a {
+        font-size: 11px;
+      }
+
+      .services-grid,
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        gap: 35px;
+      }
+
+      .contact-box {
+        padding: 40px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .navbar {
+        min-height: 72px;
+      }
+
+      .brand img {
+        width: 48px;
+        height: 48px;
+      }
+
+      .brand-text strong {
+        font-size: 16px;
+      }
+
+      .brand-text span {
+        font-size: 8px;
+        letter-spacing: 1.5px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        padding: 20px 5%;
+        background: var(--navy);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li a {
+        display: block;
+        padding: 13px 0;
+        font-size: 13px;
+      }
+
+      .nav-links .nav-contact {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .hero {
+        min-height: 570px;
+        background-position: 60% center;
+      }
+
+      .hero-content {
+        padding: 75px 0;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .services-grid,
+      .projects-grid,
+      .about-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image,
+      .about-image img {
+        min-height: 280px;
+      }
+
+      .contact-box {
+        padding: 35px 25px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-actions {
+        width: 100%;
+      }
+
+      .contact-actions .btn {
+        width: 100%;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== HEADER ===== -->
+
+  <header>
+    <div class="container navbar">
+
+      <a href="#inicio" class="brand">
+        <!-- Coloca tu logo en la carpeta images -->
+        <img src="images/logo-wilder-ramos.png"
+             alt="Logo Wilder Ramos 3D">
+
+        <div class="brand-text">
+          <strong>WILDER RAMOS</strong>
+          <span>DISEÑO Y MODELADO 3D</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle"
+              id="menuToggle"
+              aria-label="Abrir menú"
+              aria-expanded="false"
+              aria-controls="navLinks">
+        ☰
+      </button>
+
+      <nav aria-label="Navegación principal">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#contacto" class="nav-contact">Contáctame</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== INICIO ===== -->
+
+    <section class="hero" id="inicio">
+      <div class="container">
+        <div class="hero-content">
+
+          <div class="eyebrow">
+            Diseño · Creatividad · Visualización 3D
+          </div>
+
+          <h1>
+            Diseñando espacios,<br>
+            <span>dando forma a tus ideas.</span>
+          </h1>
+
+          <p>
+            Soy Wilder Ramos, ingeniero industrial apasionado
+            por el diseño y modelado de casas en 3D.
+            Transformo ideas y espacios en propuestas visuales
+            con SketchUp.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#proyectos" class="btn btn-primary">
+              Ver mis proyectos →
+            </a>
+
+            <a href="#contacto" class="btn btn-outline">
+              Solicitar información
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICIOS ===== -->
+
+    <section class="services" id="servicios">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Lo que puedo ofrecerte</div>
+
+          <h2>Diseño y modelado 3D</h2>
+
+          <p>
+            Representaciones visuales para ayudarte a explorar
+            ideas, ambientes y propuestas de vivienda.
+          </p>
+        </div>
+
+        <div class="services-grid">
+
+          <article class="service-card">
+            <div class="service-icon">⌂</div>
+
+            <h3>Diseño de casas</h3>
+
+            <p>
+              Propuestas de viviendas, distribución de ambientes
+              y exploración de ideas para tu futuro hogar.
+            </p>
+
+            <a href="#contacto" class="text-link">
+              Consultar servicio →
+            </a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">◈</div>
+
+            <h3>Modelado 3D</h3>
+
+            <p>
+              Modelos tridimensionales de casas y espacios
+              para visualizar volúmenes, formas y distribución.
+            </p>
+
+            <a href="#contacto" class="text-link">
+              Consultar servicio →
+            </a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">▧</div>
+
+            <h3>Visualización de fachadas</h3>
+
+            <p>
+              Exploración visual de fachadas, materiales,
+              colores y estilos para tus propuestas.
+            </p>
+
+            <a href="#contacto" class="text-link">
+              Consultar servicio →
+            </a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">▦</div>
+
+            <h3>Diseño de interiores</h3>
+
+            <p>
+              Modelado de ambientes interiores para visualizar
+              espacios, mobiliario y distribución.
+            </p>
+
+            <a href="#contacto" class="text-link">
+              Consultar servicio →
+            </a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">▤</div>
+
+            <h3>Modelado desde planos</h3>
+
+            <p>
+              Representación tridimensional de espacios
+              a partir de referencias y planos proporcionados.
+            </p>
+
+            <a href="#contacto" class="text-link">
+              Consultar servicio →
+            </a>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">✧</div>
+
+            <h3>Renders arquitectónicos</h3>
+
+            <p>
+              Imágenes de presentación para comunicar
+              la apariencia de tus propuestas 3D.
+            </p>
+
+            <a href="#contacto" class="text-link">
+              Consultar servicio →
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROYECTOS ===== -->
+
+    <section id="proyectos">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Mi portafolio</div>
+
+          <h2>Proyectos destacados</h2>
+
+          <p>
+            Una selección de diseños y modelos tridimensionales.
+            Aquí podrás presentar tus propios trabajos de SketchUp.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- PROYECTO 1 -->
+
+          <article class="project-card">
+            <div class="project-image">
+              <img src="images/casa-moderna.jpg"
+                   alt="Modelo 3D de casa moderna"
+                   loading="lazy">
+            </div>
+
+            <div class="project-info">
+              <span>Vivienda · Modelado 3D</span>
+              <h3>Casa moderna</h3>
+              <p>
+                Propuesta de vivienda con diseño contemporáneo
+                y volúmenes geométricos.
+              </p>
+            </div>
+          </article>
+
+          <!-- PROYECTO 2 -->
+
+          <article class="project-card">
+            <div class="project-image">
+              <img src="images/casa-dos-pisos.jpg"
+                   alt="Modelo 3D de vivienda de dos pisos"
+                   loading="lazy">
+            </div>
+
+            <div class="project-info">
+              <span>Vivienda · Fachada</span>
+              <h3>Casa de dos pisos</h3>
+              <p>
+                Exploración de fachada y distribución
+                volumétrica de una vivienda.
+              </p>
+            </div>
+          </article>
+
+          <!-- PROYECTO 3 -->
+
+          <article class="project-card">
+            <div class="project-image">
+              <img src="images/diseno-interior.jpg"
+                   alt="Modelo 3D de diseño de interiores"
+                   loading="lazy">
+            </div>
+
+            <div class="project-info">
+              <span>Interiores · Modelado 3D</span>
+              <h3>Espacios interiores</h3>
+              <p>
+                Representación tridimensional de ambientes
+                interiores y mobiliario.
+              </p>
+            </div>
+          </article>
+
+          <!-- PROYECTO 4 -->
+
+          <article class="project-card">
+            <div class="project-image">
+              <img src="images/casa-minimalista.jpg"
+                   alt="Modelo 3D de casa minimalista"
+                   loading="lazy">
+            </div>
+
+            <div class="project-info">
+              <span>Vivienda · Diseño exterior</span>
+              <h3>Casa minimalista</h3>
+              <p>
+                Propuesta visual con líneas simples
+                y composición minimalista.
+              </p>
+            </div>
+          </article>
+
+          <!-- PROYECTO 5 -->
+
+          <article class="project-card">
+            <div class="project-image">
+              <img src="images/casa-terraza.jpg"
+                   alt="Modelo 3D de casa con terraza"
+                   loading="lazy">
+            </div>
+
+            <div class="project-info">
+              <span>Vivienda · Espacios exteriores</span>
+              <h3>Casa con terraza</h3>
+              <p>
+                Modelado de vivienda con espacios
+                exteriores y terraza.
+              </p>
+            </div>
+          </article>
+
+          <!-- PROYECTO 6 -->
+
+          <article class="project-card">
+            <div class="project-image">
+              <img src="images/casa-contemporanea.jpg"
+                   alt="Modelo 3D de vivienda contemporánea"
+                   loading="lazy">
+            </div>
+
+            <div class="project-info">
+              <span>Vivienda · Visualización 3D</span>
+              <h3>Diseño contemporáneo</h3>
+              <p>
+                Representación tridimensional de una
+                propuesta de vivienda actual.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SOBRE MÍ ===== -->
+
+    <section class="about" id="sobre-mi">
+      <div class="container">
+
+        <div class="about-grid">
+
+          <div class="about-image">
+            <img src="images/wilder-ramos.jpg"
+                 alt="Imagen de presentación de Wilder Ramos"
+                 loading="lazy">
+          </div>
+
+          <div>
+
+            <div class="section-heading">
+              <div class="eyebrow">Conóceme</div>
+
+              <h2>Hola, soy Wilder Ramos</h2>
+            </div>
+
+            <p class="about-description">
+              Soy ingeniero industrial y me apasiona el diseño
+              de viviendas y la creación de modelos 3D.
+              Disfruto transformar ideas en representaciones
+              tridimensionales utilizando SketchUp.
+            </p>
+
+            <p class="about-description">
+              En este espacio comparto mis proyectos,
+              exploraciones de diseño y trabajos de modelado,
+              con el objetivo de comunicar ideas de manera
+              visual y comprensible.
+            </p>
+
+            <div class="about-points">
+              <div class="about-point">
+                <span>✓</span>
+                <p>Ingeniería Industrial</p>
+              </div>
+
+              <div class="about-point">
+                <span>✓</span>
+                <p>Diseño y modelado de casas en 3D</p>
+              </div>
+
+              <div class="about-point">
+                <span>✓</span>
+                <p>Modelado tridimensional con SketchUp</p>
+              </div>
+            </div>
+
+            <a href="#contacto" class="btn btn-primary">
+              Hablemos de tu proyecto →
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROCESO ===== -->
+
+    <section class="process">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Cómo podemos trabajar</div>
+
+          <h2>Del concepto al modelo 3D</h2>
+
+          <p>
+            Un proceso sencillo para conocer tu idea
+            y desarrollar una propuesta visual.
+          </p>
+        </div>
+
+        <div class="process-grid">
+
+          <article class="process-card">
+            <div class="process-number">01</div>
+            <h3>Conversamos</h3>
+            <p>
+              Me cuentas tu idea, necesidades y referencias.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <div class="process-number">02</div>
+            <h3>Definimos</h3>
+            <p>
+              Revisamos los espacios y el alcance del modelo.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <div class="process-number">03</div>
+            <h3>Modelamos</h3>
+            <p>
+              Desarrollamos la propuesta tridimensional
+              en SketchUp.
+            </p>
+          </article>
+
+          <article class="process-card">
+            <div class="process-number">04</div>
+            <h3>Presentamos</h3>
+            <p>
+              Compartimos las imágenes del modelo
+              según lo acordado.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACTO ===== -->
+
+    <section class="contact" id="contacto">
+      <div class="container">
+
+        <div class="contact-box">
+
+          <div>
+            <div class="eyebrow">Contacto</div>
+
+            <h2>¿Tienes una idea para tu casa?</h2>
+
+            <p>
+              Escríbeme para conversar sobre tu proyecto,
+              compartir referencias y conocer las posibilidades
+              de diseño y modelado 3D.
+            </p>
+          </div>
+
+          <div class="contact-actions">
+
+            <!-- Reemplaza 519XXXXXXXX por tu número -->
+            <a
+              href="https://wa.me/519XXXXXXXX?text=Hola%20Wilder%2C%20quiero%20consultar%20sobre%20dise%C3%B1o%20y%20modelado%203D."
+              class="btn btn-primary"
+              target="_blank"
+              rel="noopener noreferrer">
+              WhatsApp →
+            </a>
+
+            <a href="#proyectos" class="btn btn-outline">
+              Ver proyectos
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+
+  <footer>
+    <div class="container footer-content">
+
+      <div>
+        <div class="footer-brand">WILDER RAMOS 3D</div>
+        <p>Diseño y modelado de casas en 3D.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+
+      <p>
+        © <span id="year"></span> Wilder Ramos.
+        Todos los derechos reservados.
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP FLOTANTE ===== -->
+
+  <a
+    href="https://wa.me/519XXXXXXXX?text=Hola%20Wilder%2C%20quiero%20consultar%20sobre%20tus%20dise%C3%B1os%203D."
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp">
+    W
+  </a>
+
+  <!-- ===== JAVASCRIPT ===== -->
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", function () {
+      const abierto = navLinks.classList.toggle("active");
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        String(abierto)
+      );
+
+      menuToggle.setAttribute(
+        "aria-label",
+        abierto ? "Cerrar menú" : "Abrir menú"
+      );
+
+      menuToggle.textContent = abierto ? "✕" : "☰";
+    });
+
+    // Cerrar el menú al seleccionar una sección
+    document.querySelectorAll("#navLinks a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    // Año automático del pie de página
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
