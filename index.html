@@ -164,28 +164,36 @@
       font-size: 22px;
     }
 
-    /* ===== HERO ===== */
+    /* ===== HERO: TEXTO A LA IZQUIERDA,
+       IMAGEN A LA DERECHA ===== */
 
     .hero {
-      background:
-        linear-gradient(
-          90deg,
-          rgba(14, 27, 44, 0.96) 0%,
-          rgba(14, 27, 44, 0.83) 48%,
-          rgba(14, 27, 44, 0.25) 100%
-        ),
-        url('images/portada-3d.jpg') center/cover no-repeat;
+      background: linear-gradient(
+        110deg,
+        #14243a 0%,
+        #203954 60%,
+        #29384b 100%
+      );
 
       min-height: 650px;
       display: flex;
       align-items: center;
       color: var(--white);
       position: relative;
+      overflow: hidden;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 45px;
+      padding: 70px 0;
     }
 
     .hero-content {
-      max-width: 720px;
-      padding: 100px 0;
+      max-width: 650px;
+      min-width: 0;
     }
 
     .eyebrow {
@@ -199,7 +207,7 @@
 
     .hero h1 {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(38px, 6vw, 68px);
+      font-size: clamp(38px, 4.5vw, 62px);
       line-height: 1.12;
       margin-bottom: 25px;
       font-weight: 800;
@@ -221,6 +229,26 @@
       flex-wrap: wrap;
       gap: 14px;
     }
+
+    /* IMAGEN DE PORTADA */
+
+    .hero-image {
+      width: 100%;
+      min-width: 0;
+      position: relative;
+    }
+
+    .hero-image img {
+      display: block;
+      width: 100%;
+      height: 460px;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 16px;
+      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.25));
+    }
+
+    /* ===== BOTONES ===== */
 
     .btn {
       display: inline-flex;
@@ -258,7 +286,7 @@
 
     /* ===== GENERAL SECTIONS ===== */
 
-    section {
+    section:not(.hero) {
       padding: 95px 0;
     }
 
@@ -633,6 +661,14 @@
       .contact-box {
         padding: 40px;
       }
+
+      .hero-layout {
+        gap: 30px;
+      }
+
+      .hero-image img {
+        height: 360px;
+      }
     }
 
     @media (max-width: 720px) {
@@ -687,20 +723,37 @@
         margin-top: 10px;
       }
 
+      /* Portada en una columna en celulares */
+
       .hero {
-        min-height: 570px;
-        background-position: 60% center;
+        min-height: auto;
+      }
+
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 55px 0;
       }
 
       .hero-content {
-        padding: 75px 0;
+        max-width: 100%;
+      }
+
+      .hero h1 {
+        font-size: clamp(36px, 9vw, 48px);
       }
 
       .hero p {
         font-size: 14px;
       }
 
-      section {
+      .hero-image img {
+        height: auto;
+        max-height: 400px;
+        object-fit: contain;
+      }
+
+      section:not(.hero) {
         padding: 70px 0;
       }
 
@@ -758,7 +811,6 @@
     <div class="container navbar">
 
       <a href="#inicio" class="brand">
-        <!-- Coloca tu logo en la carpeta images -->
         <img src="images/logo-wilder-ramos.png"
              alt="Logo Wilder Ramos 3D">
 
@@ -795,32 +847,49 @@
 
     <section class="hero" id="inicio">
       <div class="container">
-        <div class="hero-content">
 
-          <div class="eyebrow">
-            Diseño · Creatividad · Visualización 3D
+        <div class="hero-layout">
+
+          <!-- TEXTO A LA IZQUIERDA -->
+
+          <div class="hero-content">
+
+            <div class="eyebrow">
+              Diseño · Creatividad · Visualización 3D
+            </div>
+
+            <h1>
+              Diseñando espacios,<br>
+              <span>dando forma a tus ideas.</span>
+            </h1>
+
+            <p>
+              Soy Wilder Ramos, ingeniero industrial apasionado
+              por el diseño y modelado de casas en 3D.
+              Transformo ideas y espacios en propuestas visuales
+              con SketchUp.
+            </p>
+
+            <div class="hero-buttons">
+
+              <a href="#proyectos" class="btn btn-primary">
+                Ver mis proyectos →
+              </a>
+
+              <a href="#contacto" class="btn btn-outline">
+                Solicitar información
+              </a>
+
+            </div>
           </div>
 
-          <h1>
-            Diseñando espacios,<br>
-            <span>dando forma a tus ideas.</span>
-          </h1>
+          <!-- IMAGEN A LA DERECHA -->
 
-          <p>
-            Soy Wilder Ramos, ingeniero industrial apasionado
-            por el diseño y modelado de casas en 3D.
-            Transformo ideas y espacios en propuestas visuales
-            con SketchUp.
-          </p>
-
-          <div class="hero-buttons">
-            <a href="#proyectos" class="btn btn-primary">
-              Ver mis proyectos →
-            </a>
-
-            <a href="#contacto" class="btn btn-outline">
-              Solicitar información
-            </a>
+          <div class="hero-image">
+            <img
+              src="images/portada-3d.png"
+              alt="Portada de Wilder Ramos 3D"
+              fetchpriority="high">
           </div>
 
         </div>
